@@ -18,9 +18,12 @@ public class MainActivity extends AppCompatActivity
 // Comment Testing
     //Comment testing2
     // Comment Testing 3
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle("NutriScan");                               // Change Title Hereeeeeeee so you can see
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
