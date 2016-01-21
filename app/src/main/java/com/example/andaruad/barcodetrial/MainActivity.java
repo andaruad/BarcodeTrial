@@ -13,6 +13,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.journeyapps.barcodescanner.CaptureActivity;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 // Comment Testing
@@ -45,6 +48,23 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+    //Barcode Scanner
+        new IntentIntegrator(this).initiateScan();
+        IntentIntegrator integrator = new IntentIntegrator(this);
+        integrator.setDesiredBarcodeFormats(IntentIntegrator.ONE_D_CODE_TYPES);
+        integrator.setPrompt("Scan a barcode");
+        integrator.setCameraId(0);  // Use a specific camera of the device
+        integrator.setBeepEnabled(false);
+        integrator.setBarcodeImageEnabled(true);
+        integrator.setCaptureActivity(CaptureActivityAnyOrientation.class);
+        integrator.setOrientationLocked(false);
+        integrator.initiateScan();
+
+    }
+
+    public class CaptureActivityAnyOrientation extends CaptureActivity {
+
     }
 
     @Override
